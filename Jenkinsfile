@@ -57,13 +57,13 @@ pipeline {
       steps {
         parallel(
           "Nginx App Protect Requirements": {
-            sh "ansible-galaxy install -r requirements.yml --force"
+            - ansible-galaxy install -r requirements.yml --force
           },
           "Deploy_NAP": {
-            sh "ansible-playbook -i hosts app-protect.yml"
+             - ansible-playbook -i hosts app-protect.yml
           },
           "Workaround_DNS": {
-            sh 'ansible-playbook -i hosts copy-nginx-conf.yml'
+            - ansible-playbook -i hosts copy-nginx-conf.yml
           }
         )
       }
