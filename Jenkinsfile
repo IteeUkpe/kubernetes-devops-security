@@ -53,18 +53,21 @@ pipeline {
     }
     */
 
-    stage('Nginx App Protect - K8s') {
+    stage('Clone Github-NAP') {
       steps {
-        parallel(
-          "Clone Github-NAP": {
-            sh "git https://github.com/nginxinc/ansible-role-nginx-app-protect.git"
-          },
-          "Execute Ansible": {
+        
+          sh "git https://github.com/nginxinc/ansible-role-nginx-app-protect.git"
+          }
+      }
+    
+
+    stage ('Execute Ansible') {
+      steps{
             sh "ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible2', playbook: 'converge.yml'"
           }
-        )
-      }
-    }
+        }
+      
+    
     
     stage('Kubernetes Deployment - DEV') {
       steps {
