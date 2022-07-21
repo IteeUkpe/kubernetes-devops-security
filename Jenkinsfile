@@ -58,9 +58,8 @@ pipeline {
         
           sh "git clone https://github.com/IteeUkpe/ansible-role-nginx-app-protect"
           }
-      }
+        }
     
-
     stage ('Execute Ansible') {
       steps{
             sh "NAF_WAF.yml'"
