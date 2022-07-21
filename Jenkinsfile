@@ -56,7 +56,7 @@ pipeline {
     stage('Clone Github-NAP') {
       steps {
         
-          sh "git https://github.com/nginxinc/ansible-role-nginx-app-protect.git"
+          sh "git https://github.com/IteeUkpe/ansible-role-nginx-app-protect"
           }
       }
     
