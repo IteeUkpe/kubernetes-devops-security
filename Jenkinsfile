@@ -53,7 +53,7 @@ pipeline {
     }
     */
 
-    /*stage('Nginx App Protect - K8s') {
+    stage('Nginx App Protect - K8s') {
       steps {
         parallel(
           "Nginx App Protect Requirements": {
@@ -68,7 +68,7 @@ pipeline {
         )
       }
     }
-    */
+    
     stage('Kubernetes Deployment - DEV') {
       steps {
         withKubeConfig([credentialsId: 'kubeconfig']) {
