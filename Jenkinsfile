@@ -62,7 +62,7 @@ pipeline {
     */
     stage ('Execute Ansible') {
       steps{
-            sh "NAF_WAF.yml'"
+            sh "NAF_WAF.yml"
           }
         }
       
