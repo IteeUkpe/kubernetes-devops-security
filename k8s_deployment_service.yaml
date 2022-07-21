@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: bkimminich
+        app: devsecops
     spec:
       containers:
       - image: bkimminich/juice
