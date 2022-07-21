@@ -31,7 +31,7 @@ pipeline {
           sh 'docker build -t iteeukpe/numeric-app:""$GIT_COMMIT"" .'
           sh 'docker push iteeukpe/numeric-app:""$GIT_COMMIT""'
         }*/
-        docker run -d -p 3000:3000 bkimminich/juice-shop
+          sh 'docker run -d -p 3000:3000 bkimminich/juice-shop'
       }
     }
 
