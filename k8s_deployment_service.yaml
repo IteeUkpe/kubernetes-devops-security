@@ -2,18 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: devsecops
+    #app: devsecops
+    app: bkimminich/juice
   name: devsecops
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: devsecops
+      app: bkimminich/juice
   strategy: {}
   template:
     metadata:
       labels:
-        app: devsecops
+        app: bkimminich/juice
     spec:
       containers:
       - image: replace
@@ -23,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: devsecops
+    app: bkimminich/juice
   name: devsecops-svc
 spec:
   ports:
@@ -31,5 +32,5 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: devsecops
+    app: bkimminich/juice
   type: NodePort
