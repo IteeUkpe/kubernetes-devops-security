@@ -56,14 +56,11 @@ pipeline {
     stage('Nginx App Protect - K8s') {
       steps {
         parallel(
-          "Nginx App Protect Requirements": {
-            - ansible-galaxy install -r requirements.yml --force
+          "Clone Github-NAP": {
+            git 'https://github.com/nginxinc/ansible-role-nginx-app-protect.git'
           },
-          "Deploy_NAP": {
-             - ansible-playbook -i hosts app-protect.yml
-          },
-          "Workaround_DNS": {
-            - ansible-playbook -i hosts copy-nginx-conf.yml
+          "Execute Ansible": {
+            ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible2', playbook: 'converge.yml'
           }
         )
       }
