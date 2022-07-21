@@ -1,24 +1,4 @@
-## Deploy Node-Service in Kubernetes Default Namespace
 
-kubectl -n default create deploy node-app --image siddharth67/node-service:v1 
-kubectl -n default expose deploy node-app --name node-service --port 5000
-
-
-
-
-## Within /src/main/java/com/devsecops/NumericController.java  
-## use node-service:5000/plusone as baseURL and 
-## comment the localhost:5000
-
-private static final String baseURL = "http://node-service:5000/plusone";
-//private static final String baseURL = "http://localhost:5000/plusone";
-
-
-
-
-
-### Jenkinsfile - added Kubernetes Deployment - DEV Stage
-## replace  siddharth67 with your dockerhub username
 
 pipeline {
   agent any
@@ -48,8 +28,8 @@ pipeline {
       steps {
         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t siddharth67/numeric-app:""$GIT_COMMIT"" .'
-          sh 'docker push siddharth67/numeric-app:""$GIT_COMMIT""'
+          sh 'docker build -t iteeukpe/numeric-app:""$GIT_COMMIT"" .'
+          sh 'docker push iteeukpe/numeric-app:""$GIT_COMMIT""'
         }
       }
     }
@@ -57,7 +37,7 @@ pipeline {
     stage('Kubernetes Deployment - DEV') {
       steps {
         withKubeConfig([credentialsId: 'kubeconfig']) {
-          sh "sed -i 's#replace#siddharth67/numeric-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
+          sh "sed -i 's#replace#iteeukpe/numeric-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
           sh "kubectl apply -f k8s_deployment_service.yaml"
         }
       }
