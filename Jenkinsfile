@@ -4,8 +4,9 @@ pipeline {
   stages {
       stage('Build Artifact') {
             steps {
-              sh "mvn clean package -DskipTests=true"
-              archive 'target/*.jar' //so that they can be downloaded later
+              sh "mvn clean package -DskipTests=true" // this should be a push
+              sh "mvn clean package"
+              archive 'target/*.jar' //Yes, so that they can be downloaded later
             }
         }   
     }
