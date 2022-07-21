@@ -2,12 +2,34 @@ pipeline {
   agent any
 
   stages {
-      stage('Build Artifact') {
-            steps {
-              sh "mvn clean package -DskipTests=true" // this should be a push
-              sh "mvn clean package"
-              archive 'target/*.jar' //Yes, so that they can be downloaded later
-            }
-        }   
+
+    stage('Build Artifact - Maven') {
+      steps {
+        sh "mvn clean package -DskipTests=true"
+        archive 'target/*.jar'
+      }
     }
+
+    stage('Unit Tests - JUnit and Jacoco') {
+      steps {
+        sh "mvn test"
+      }
+      post {
+        always {
+          junit 'target/surefire-reports/*.xml'
+          jacoco execPattern: 'target/jacoco.exec'
+        }
+      }
+    }
+
+    stage('Docker Build and Push') {
+      steps {
+        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          sh 'printenv'
+          sh 'docker build -t iteeukpe/numeric-app:""$GIT_COMMIT"" .'
+          sh 'docker push iteeukpe/numeric-app:""$GIT_COMMIT""'
+        }
+      }
+    }
+  }
 }
