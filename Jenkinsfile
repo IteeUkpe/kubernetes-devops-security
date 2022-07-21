@@ -53,13 +53,13 @@ pipeline {
     }
     */
 
-    stage('Clone Github-NAP') {
+    /*stage('Clone Github-NAP') {
       steps {
         
           sh "git clone https://github.com/IteeUkpe/ansible-role-nginx-app-protect"
           }
         }
-    
+    */
     stage ('Execute Ansible') {
       steps{
             sh "NAF_WAF.yml'"
