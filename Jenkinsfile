@@ -63,7 +63,7 @@ pipeline {
 
     stage ('Execute Ansible') {
       steps{
-            sh "ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible2', playbook: 'converge.yml'"
+            sh "NAF_WAF.yml'"
           }
         }
       
