@@ -57,10 +57,10 @@ pipeline {
       steps {
         parallel(
           "Clone Github-NAP": {
-            git 'https://github.com/nginxinc/ansible-role-nginx-app-protect.git'
+            sh 'git https://github.com/nginxinc/ansible-role-nginx-app-protect.git'
           },
           "Execute Ansible": {
-            ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible2', playbook: 'converge.yml'
+            sh 'ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible2', playbook: 'converge.yml''
           }
         )
       }
