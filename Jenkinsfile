@@ -53,19 +53,13 @@ pipeline {
     }
     */
 
-    /*stage('Clone Github-NAP') {
-      steps {
-        
-          sh "git clone https://github.com/IteeUkpe/ansible-role-nginx-app-protect"
-          }
-        }
-    */
-    stage ('Execute Ansible') {
+    
+    /*stage ('Execute Ansible') {
       steps{
             sh "ansible-playbook main.yml"
           }
         }
-      
+    */  
     
     
     stage('Kubernetes Deployment - DEV') {
