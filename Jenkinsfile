@@ -7,22 +7,22 @@ pipeline {
 
     stage('Build Artifact - Maven') {
       steps {
-        sh "mvn clean package -DskipTests=true"
-        archive 'target/*.jar'
+        //sh "mvn clean package -DskipTests=true"
+        //archive 'target/*.jar'
       }
     }
 
     stage('Unit Tests - JUnit and JaCoCo') {
       steps {
-        sh "mvn test"
+        //sh "mvn test"
       }
-      post {
+      /*post {
         always {
           junit 'target/surefire-reports/*.xml'
           jacoco execPattern: 'target/jacoco.exec'
         }
       }
-    }
+    }*/
 
     /*stage('Nginx App Protect - Docker') {
       steps {
@@ -71,7 +71,13 @@ pipeline {
       }
     }
 
-    
+    stage('OWASP ZAP - DAST') {
+      steps {
+        withKubeConfig([credentialsId: 'kubeconfig']) {
+          sh 'bash zap.sh'
+        }
+      }
+    }
     
   }
 
