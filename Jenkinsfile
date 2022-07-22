@@ -62,7 +62,7 @@ pipeline {
     */
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook tasks/main.yml"
+            sh "ansible-playbook main.yml"
           }
         }
       
