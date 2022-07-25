@@ -56,8 +56,7 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook /var/lib/jenkins/workspace/Nap_Ansible_Demo/ansible-role-nginx-app-protect/molecule/advanced/ansible-playbook/converge.yml
-"
+            sh "ansible-playbook /var/lib/jenkins/workspace/Nap_Ansible_Demo/ansible-role-nginx-app-protect/molecule/advanced/ansible-playbook/converge.yml"
           }
         }
      
