@@ -10,7 +10,7 @@ pipeline {
         //sh "mvn clean package -DskipTests=true"
         //archive 'target/*.jar'
       }
-    }
+    }*/
 
     stage('Unit Tests - JUnit and JaCoCo') {
       steps {
@@ -56,8 +56,7 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook playbook.yml
-            
+            sh "ansible-playbook playbook.yml"
           }
         }
      
