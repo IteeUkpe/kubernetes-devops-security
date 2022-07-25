@@ -56,7 +56,7 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook ..Ansible-role-nginx-app-protect/molecule/advanced/converge.yml"
+            sh "ansible-playbook ../Ansible-role-nginx-app-protect/molecule/advanced/converge.yml"
           }
         }
      
