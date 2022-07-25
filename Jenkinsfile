@@ -20,7 +20,7 @@ pipeline {
 
     stage('SCM Checkout') {
       steps {
-        git branch: 'main', url: 'https://github.com/IteeUkpe/ansible-role-nginx-app-protect/tree/main/tasks'
+        git branch: 'main', url: 'https://github.com/IteeUkpe/ansible-role-nginx-app-protect'
       }
     } 
 
