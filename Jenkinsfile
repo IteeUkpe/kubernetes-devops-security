@@ -50,7 +50,7 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-Playbook disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'dev.inv', playbook: 'playbook.yml'"
+            ansible-Playbook disableHostKeyChecking: true, installation: 'Ansible2', inventory: './dev.inv', playbook: 'playbook.yml
           }
         }
      
