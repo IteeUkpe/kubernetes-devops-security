@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: playbook
   hosts: atlanta
   tasks:
     - name: Install NGINX App Protect WAF
