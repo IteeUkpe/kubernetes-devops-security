@@ -57,10 +57,14 @@ pipeline {
     stage ('Execute Ansible') {
       steps{
 <<<<<<< HEAD
+<<<<<<< HEAD
             sh "ansible-playbook playbook.yml"
 =======
             sh "ansible-playbook ..Ansible-role-nginx-app-protect/molecule/advanced/converge.yml"
 >>>>>>> parent of 60e61b3 (Update Jenkinsfile)
+=======
+            sh "ansible-playbook converge.yml"
+>>>>>>> parent of 24be446 (main.yml)
           }
         }
      
