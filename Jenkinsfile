@@ -5,7 +5,7 @@ pipeline {
 
   stages {
 
-    stage('Build Artifact - Maven') {
+    /*stage('Build Artifact - Maven') {
       steps {
         //sh "mvn clean package -DskipTests=true"
         //archive 'target/*.jar'
@@ -54,12 +54,12 @@ pipeline {
     */
 
     
-    /*stage ('Execute Ansible') {
+    stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook main.yml"
+            sh "ansible-playbook ../tasks/main.yml"
           }
         }
-    */  
+     
     
     
     stage('Kubernetes Deployment - DEV') {
