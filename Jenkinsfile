@@ -56,7 +56,8 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook /var/lib/jenkins/workspace/Nap_Ansible_Demo/ansible-role-nginx-app-protect/tasks/main.yml"
+            sh "ansible-playbook playbook.yml
+            
           }
         }
      
