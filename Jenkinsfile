@@ -56,7 +56,7 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook converge.yml"
+            sh "ansible-playbook advanced/converge.yml"
           }
         }
      
