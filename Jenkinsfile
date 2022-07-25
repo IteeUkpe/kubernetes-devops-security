@@ -56,7 +56,7 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-            sh "ansible-playbook ../tasks/main.yml"
+            sh "ansible-playbook Ansible-role-nginx-app-protect/tasks/main.yml"
           }
         }
      
