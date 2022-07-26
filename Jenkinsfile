@@ -41,6 +41,7 @@ pipeline {
       steps{
           sh "sudo ansible-playbook -i dev.inv playbook.yml --private-key=*.ssh"
         }
+    }
      
     
     
