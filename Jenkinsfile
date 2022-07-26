@@ -39,8 +39,7 @@ pipeline {
     
     stage ('Execute Ansible') {
       steps{
-          sh "ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible2', inventory: 'dev.inv', playbook: 'playbook.yml'"
-          }
+          sh "sudo ansible-playbook -i dev.inv playbook.yml --private-key=*.ssh"
         }
      
     
